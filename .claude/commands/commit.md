@@ -80,18 +80,23 @@ seeds `main`. Ask before that push.
 git log --oneline -1
 ```
 Update the entry's **Git Hash** field with the branch commit and PR for each repo (e.g.
-`main-repo=abc1234 (branch topic, PR owner/repo#5), sub=def5678 (PR owner/sub#3), pending merge`).
-Commit that on the same branch with a plain message without the `[AI-assisted]` prefix, such as
+`main-repo=abc1234 (PR owner/repo#5), sub=def5678 (PR owner/sub#3)`). Commit that on the same
+branch with a plain message without the `[AI-assisted]` prefix, such as
 `Update AI usage log with git hashes`, and push it.
+
+That is the last log update for this change, and it never needs a PR of its own. A merge commit
+keeps every branch SHA, so the recorded hash stays valid after the merge. If a PR is squash- or
+rebase-merged, its branch SHAs no longer exist: correct them to the merged SHA on the next
+branch that touches the log.
 
 ### 8. After a submodule PR merges: bump the pointer
 ```bash
 git -C <sub> switch main && git -C <sub> pull --ff-only && git -C <sub> branch -d <topic>
-git add <sub> ai/ai_usage_log.md && git commit -m "Bump <sub> to merged PR #N"
+git add <sub> && git commit -m "Bump <sub> to merged PR #N"
 ```
 Make that commit on the main repo's feature branch: the still-open PR for the same change if
-there is one, otherwise a new branch and PR. Replace "pending merge" in the log with the merged
-SHA. A squash or rebase merge rewrites the branch SHAs, so correct them to the merged SHAs.
+there is one, otherwise a new branch and PR. The pointer-bump commit is this repo's record of
+the merged submodule SHA; the log needs no further update.
 
 ### 9. Pushing
 Never push `main`. The feature-branch pushes above are the one standing exception; ask before
