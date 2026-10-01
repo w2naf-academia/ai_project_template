@@ -33,7 +33,7 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
 - **Sections/Files Affected**: `.claude/commands/commit.md` (steps 6 to 9 rewritten for branch, PR, pointer bump, push order; see the follow-up entry below), `CLAUDE.md` (new Git Workflow section; Submodules steps), `.claude/rules/python-code.md`, `.claude/rules/ai-governance.md`, `README.md`
 - **Nature of Contribution**: Edit
 - **Human Review Status**: Pending review
-- **Git Hash**: c525fe3 (branch pr-workflow, PR w2naf-academia/ai_project_template#1), pending merge
+- **Git Hash**: c525fe3 (branch pr-workflow, PR w2naf-academia/ai_project_template#1), merged as 28aaa71
 
 ## [2026-10-01 16:50 UTC]
 - **Tool**: Claude (Anthropic), claude-opus-5-5
@@ -45,4 +45,4 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
   (Sections field of the 16:26 entry corrected to describe the final change)
 - **Nature of Contribution**: Edit
 - **Human Review Status**: Pending review
-- **Git Hash**: d9af543 (branch pr-workflow, PR w2naf-academia/ai_project_template#1), pending merge
+- **Git Hash**: d9af543 (branch pr-workflow, PR w2naf-academia/ai_project_template#1), merged as 28aaa71
