@@ -47,32 +47,63 @@ Present the draft to the user. Wait for confirmation or corrections.
 
 ### 5. Append the entry to `ai/ai_usage_log.md`
 
-### 6. Commit in submodules FIRST (if any have changes)
-For each submodule with changes:
+### 6. Every repo with changes: feature branch, commit, push the branch, open a PR
+Nothing is committed directly to `main`, in this repo or any submodule. Work the submodules
+first, then the main repo. For each repo with changes, propose a short kebab-case branch name
+with the commit message and wait for the user's approval. Then:
 ```bash
-git -C <submodule-path> add <files>
-git -C <submodule-path> commit -m "[AI-assisted] <description>"
+git -C <repo> fetch
+git -C <repo> switch -c <topic> origin/main     # uncommitted changes carry over to the branch
+git -C <repo> add <files>
+git -C <repo> commit -m "[AI-assisted] <description>"
+git -C <repo> push -u origin <topic>
+gh pr create --repo <owner>/<repo> --base main --head <topic> --title "..." --body-file <file>
 ```
+If the repo is already on a feature branch whose PR is still open **for this same change**, add
+the commit there and push it; do not open a second PR. If it is on some other branch, say so and
+ask before branching.
 
-If there are no submodules, or none have changes, skip this step.
+The PR body says what changed and why, references the tracking issue, links the companion PRs
+in the other repos of the same change, and ends with an AI attribution line. Pushing the feature
+branch, opening the PR and pushing further commits to it are standing permission once the user
+has approved the commit. **Never push `main`. Never merge**: a human reviewer reviews and merges. A repo
+whose remote cannot host a PR (an Overleaf project, say) is outside this step; ask.
 
-### 7. Commit in the main repo
-Stage `ai/ai_usage_log.md`, any updated submodule pointers, and any other changed project files:
-```bash
-git add ai/ai_usage_log.md <other-files-and-submodule-pointers>
-git commit -m "[AI-assisted] <description>"
-```
+In the main repo, stage `ai/ai_usage_log.md` with the other changed files. **Do not stage a
+submodule pointer that names an unmerged branch commit.**
 
-### 8. Fill in the git hash(es)
+A brand-new repository whose remote has no `main` yet is the one exception: its first commit
+seeds `main`. Ask before that push.
+
+### 7. Fill in the git hash(es)
 ```bash
 git log --oneline -1
 ```
-Update the log entry's **Git Hash** field with the main-repo hash and any submodule hashes (e.g., `main=abc1234, overleaf=def5678`).
+Update the entry's **Git Hash** field with the branch commit and PR for each repo (e.g.
+`main-repo=abc1234 (branch topic, PR owner/repo#5), sub=def5678 (PR owner/sub#3), pending merge`).
+Commit that on the same branch with a plain message without the `[AI-assisted]` prefix, such as
+`Update AI usage log with git hashes`, and push it.
 
-If updating the hash field requires a follow-up commit, use a non-`[AI-assisted]` commit message such as `Update AI usage log with git hashes`.
+### 8. After a submodule PR merges: bump the pointer
+```bash
+git -C <sub> switch main && git -C <sub> pull --ff-only && git -C <sub> branch -d <topic>
+git add <sub> ai/ai_usage_log.md && git commit -m "Bump <sub> to merged PR #N"
+```
+Make that commit on the main repo's feature branch: the still-open PR for the same change if
+there is one, otherwise a new branch and PR. Replace "pending merge" in the log with the merged
+SHA. A squash or rebase merge rewrites the branch SHAs, so correct them to the merged SHAs.
 
-### 9. Ask before pushing
-Never push without explicit user instruction.
+### 9. Pushing
+Never push `main`. The feature-branch pushes above are the one standing exception; ask before
+any other push. Fetch and verify the remote state first, push fast-forward only, never
+force-push, never hard-reset.
+
+With submodules, **push the submodule before the parent**. A parent that reaches GitHub ahead
+of its submodule looks correct on the machine that pushed it and breaks for everyone who clones.
+Verify first:
+```bash
+git -C <submodule-path> branch -r --contains HEAD   # empty output = local only; push it first
+```
 
 ## Notes
 

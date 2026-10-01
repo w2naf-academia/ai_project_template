@@ -24,3 +24,25 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
 - **Nature of Contribution**: Configuration / scaffolding refinement
 - **Human Review Status**: Reviewed and verified
 - **Git Hash**: e229ba5
+
+## [2026-10-01 16:26 UTC]
+- **Tool**: Claude (Anthropic), claude-opus-5-5
+- **Session Purpose**: Update the template so that every commit goes on a feature branch and
+  through a pull request that a human reviews and merges, replacing the earlier
+  "commit to main, ask before pushing" workflow.
+- **Sections/Files Affected**: `.claude/commands/commit.md` (steps 6 to 9 rewritten for branch, PR, pointer bump, push order; see the follow-up entry below), `CLAUDE.md` (new Git Workflow section; Submodules steps), `.claude/rules/python-code.md`, `.claude/rules/ai-governance.md`, `README.md`
+- **Nature of Contribution**: Edit
+- **Human Review Status**: Pending review
+- **Git Hash**: c525fe3 (branch pr-workflow, PR w2naf-academia/ai_project_template#1), pending merge
+
+## [2026-10-01 16:50 UTC]
+- **Tool**: Claude (Anthropic), claude-opus-5-5
+- **Session Purpose**: Follow-up on the same PR, at N. A. Frissell's direction: keep this
+  template self-contained. The first commit had replaced `/commit` with a copy of a private
+  workflow file that cited rule IDs and a repository readers of this template cannot see; this
+  commit replaces it with a self-contained branch/PR workflow and removes those references.
+- **Sections/Files Affected**: `.claude/commands/commit.md`, `README.md`, `ai/ai_usage_log.md`
+  (Sections field of the 16:26 entry corrected to describe the final change)
+- **Nature of Contribution**: Edit
+- **Human Review Status**: Pending review
+- **Git Hash**: d9af543 (branch pr-workflow, PR w2naf-academia/ai_project_template#1), pending merge
