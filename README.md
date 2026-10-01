@@ -35,7 +35,7 @@ or click **Use this template** on the GitHub repository page.
 
 - **`CLAUDE.md`** — top-level project instructions consumed automatically by Claude Code, with placeholders for project specifics.
 - **`.claude/rules/ai-governance.md`** — standing AI-use policies (Scranton, HamSCI, NASA, NSF) plus a funder-specific section.
-- **`.claude/commands/commit.md`** — the `/commit` slash command that logs the AI session, then commits each changed repo (submodules first) on a feature branch and opens a pull request for human review and merge. Auto-detects submodules. Vendored byte-identical from `research-conventions`.
+- **`.claude/commands/commit.md`** — the `/commit` slash command that logs the AI session, then commits each changed repo (submodules first) on a feature branch and opens a pull request for human review and merge. Auto-detects submodules.
 - **`ai/ai_usage_log.md`** — append-only log of every substantive AI-assisted session.
 - **`.gitignore`** — generic LaTeX + Python build artifacts.
 - **Optional rule files** for LaTeX writing and Python code, with "delete if unused" headers.
