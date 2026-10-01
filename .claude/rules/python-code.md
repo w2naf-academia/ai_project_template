@@ -18,7 +18,8 @@ paths:
 - If code lives in a submodule, commit changes in the submodule first, then update the pointer in the main repo
 - Use `[AI-assisted]` prefix on AI-assisted commits
 - Reference issue trackers (GitHub issues, project boards) in commit messages where applicable (e.g., `closes #N`)
-- Ask before pushing to any remote
+- Every change goes on a feature branch and through a pull request; never commit or push directly to `main`, and never merge (the human reviewer merges)
+- Pushing a feature branch and opening its PR is standing permission once the user approves the commit; ask before any other push
 
 ## Open Source Considerations
 - If the code will be released open-source, keep commit history clean and suitable for public visibility

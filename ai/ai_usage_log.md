@@ -24,3 +24,13 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
 - **Nature of Contribution**: Configuration / scaffolding refinement
 - **Human Review Status**: Reviewed and verified
 - **Git Hash**: e229ba5
+
+## [2026-10-01 16:26 UTC]
+- **Tool**: Claude (Anthropic), claude-opus-5-5
+- **Session Purpose**: Update the template so that every commit goes on a feature branch and
+  through a pull request that a human reviews and merges, replacing the earlier
+  "commit to main, ask before pushing" workflow.
+- **Sections/Files Affected**: `.claude/commands/commit.md` (replaced with a byte-identical copy of the research-conventions `/commit`), `CLAUDE.md` (new Git Workflow section; Submodules steps), `.claude/rules/python-code.md`, `.claude/rules/ai-governance.md`, `README.md`
+- **Nature of Contribution**: Edit
+- **Human Review Status**: Pending review
+- **Git Hash**: [fill in after committing]

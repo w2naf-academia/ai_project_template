@@ -51,3 +51,4 @@ Use the `/commit` command to handle logging and committing in the correct order.
 - Submit sensitive student data, unpublished data, ITAR/EAR-controlled, or proprietary information to AI tools
 - Skip the AI usage log before committing AI-assisted changes
 - Force-push or hard-reset without explicit user instruction
+- Commit or push directly to `main`, or merge a pull request; every change goes through a feature-branch PR that a human reviews and merges

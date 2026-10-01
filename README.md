@@ -29,13 +29,13 @@ or click **Use this template** on the GitHub repository page.
    - Overleaf manuscript: `git submodule add https://git.overleaf.com/<id> overleaf`
    - External code repo: `git submodule add git@github.com:org/repo.git <path>`
 5. **Customize `.claude/rules/ai-governance.md`** — fill in the `{{FUNDER}}`-specific expectations section, or delete it if the project is unfunded.
-6. **Commit and push** the instantiated project to its own GitHub repo.
+6. **Commit and push** the instantiated project to its own GitHub repo. This initial push seeds `main`; every change after it goes through a feature branch and pull request (see `CLAUDE.md` § Git Workflow).
 
 ## What This Template Provides
 
 - **`CLAUDE.md`** — top-level project instructions consumed automatically by Claude Code, with placeholders for project specifics.
 - **`.claude/rules/ai-governance.md`** — standing AI-use policies (Scranton, HamSCI, NASA, NSF) plus a funder-specific section.
-- **`.claude/commands/commit.md`** — the `/commit` slash command that logs the AI session, commits dirty submodules first, then commits the main repo. Auto-detects submodules.
+- **`.claude/commands/commit.md`** — the `/commit` slash command that logs the AI session, then commits each changed repo (submodules first) on a feature branch and opens a pull request for human review and merge. Auto-detects submodules. Vendored byte-identical from `research-conventions`.
 - **`ai/ai_usage_log.md`** — append-only log of every substantive AI-assisted session.
 - **`.gitignore`** — generic LaTeX + Python build artifacts.
 - **Optional rule files** for LaTeX writing and Python code, with "delete if unused" headers.

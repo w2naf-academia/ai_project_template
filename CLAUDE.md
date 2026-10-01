@@ -32,12 +32,21 @@ This project starts from the `ai_project_template` scaffold. Add or remove top-l
 └── {{PROJECT-SPECIFIC FOLDERS}}  ← e.g., manuscript/, src/, posters/, proposal/
 ```
 
+## Git Workflow
+Every change goes through a pull request, in this repo and in every submodule. Nothing is committed directly to `main`.
+1. Branch from the remote tip: `git fetch && git switch -c <topic> origin/main`
+2. Commit on the branch, with the `[AI-assisted]` prefix where applicable
+3. Push the branch and open a PR: `git push -u origin <topic>`, then `gh pr create`
+4. A human reviews and merges. Claude never pushes `main` and never merges.
+
+Once the user has approved a commit, pushing its feature branch and opening or updating its PR is standing permission. Any other push needs explicit instruction. Never force-push or hard-reset.
+
 ## Submodules (optional)
 If your project includes submodules (e.g., an Overleaf manuscript or a separate code repo):
-1. Make changes and commit **inside** the submodule first
-2. Then commit the updated submodule pointer in this repo
-3. Always use `[AI-assisted]` prefix on commits made with AI assistance
-4. Ask before pushing to any remote
+1. Make changes and commit **inside** the submodule first, on its own feature branch and PR
+2. Bump the submodule pointer in this repo only after the submodule PR has merged; never pin this repo to an unmerged branch commit
+3. Push the submodule before this repo, and open one PR per repo, cross-linked in each body
+4. A repo whose remote cannot host a PR (e.g., Overleaf) is outside the PR rule; ask before changing one
 
 The `/commit` workflow auto-detects submodules via `git submodule status`.
 
