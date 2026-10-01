@@ -33,4 +33,4 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
 - **Sections/Files Affected**: `.claude/commands/commit.md` (replaced with a byte-identical copy of the research-conventions `/commit`), `CLAUDE.md` (new Git Workflow section; Submodules steps), `.claude/rules/python-code.md`, `.claude/rules/ai-governance.md`, `README.md`
 - **Nature of Contribution**: Edit
 - **Human Review Status**: Pending review
-- **Git Hash**: [fill in after committing]
+- **Git Hash**: c525fe3 (branch pr-workflow, PR w2naf-academia/ai_project_template#1), pending merge
