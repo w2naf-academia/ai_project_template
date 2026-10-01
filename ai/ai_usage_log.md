@@ -46,3 +46,13 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
 - **Nature of Contribution**: Edit
 - **Human Review Status**: Pending review
 - **Git Hash**: d9af543 (branch pr-workflow, PR w2naf-academia/ai_project_template#1), merged as 28aaa71
+
+## [2026-10-01 17:46 UTC]
+- **Tool**: Claude (Anthropic), claude-opus-5-5
+- **Session Purpose**: Stop the AI usage log from forcing a second pull request per change. The
+  Git Hash field is now filled in once, on the change's own branch; a merge commit keeps that
+  SHA valid, so no post-merge "merged SHA" update is needed.
+- **Sections/Files Affected**: `.claude/commands/commit.md` (Git Hash and submodule pointer-bump steps)
+- **Nature of Contribution**: Edit
+- **Human Review Status**: Pending review
+- **Git Hash**: [fill in after committing]
