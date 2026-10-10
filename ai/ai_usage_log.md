@@ -94,3 +94,21 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
   Claude Code hooks documentation. Project hooks run without a trust prompt; this one only reads
   `.claude/template.json` and makes one public HTTPS request to GitHub.
 - **Git Hash**: 96a854a, branch `template-sync-tooling`
+
+## [2026-10-10 15:14 UTC]
+- **Tool**: Claude (Anthropic), claude-opus-5-5 (1M context)
+- **Session Purpose**: Fix a flaw in the template check found before rolling it out: comparing
+  commit SHAs alone made templates flag each other indefinitely (marking a sibling reviewed is
+  itself a commit the siblings see) and flagged projects for template changes with nothing to
+  adopt.
+- **Sections/Files Affected**: `.claude/hooks/template_check.sh` (asks GitHub's compare API which
+  files changed and ignores `.claude/template.json`, `ai/ai_usage_log.md` and, in a project, its
+  `not_adopted` files; falls back to flagging if the file list is unavailable; names the changed
+  files in its notice); `.claude/commands/template-sync.md` (record and log are never taken from
+  the template; companion changes only need marking reviewed); `.claude/template.json` (sibling
+  template-sync tooling, the companion of this template's own, marked reviewed).
+- **Nature of Contribution**: Code generation, edit.
+- **Human Review Status**: Pending review.
+- **Notes**: Tested on scratch repositories (behind: flagged with file list; only ignorable
+  changes: silent) and on the live w2naf-academia template (flags both siblings' tooling PRs).
+- **Git Hash**: [fill in after committing]

@@ -57,7 +57,10 @@ template's log belongs to the template.
 On a feature branch (`git switch -c template-sync-<date> origin/main`, or `master` where that is
 the default), for each file the template changed:
 
-- **In `not_adopted`:** report it and skip it.
+- **`.claude/template.json` and `ai/ai_usage_log.md`:** never taken from the template. They
+  are each repository's own record and log, and the session-start check ignores changes to them.
+- **In `not_adopted`:** report it and skip it. A project's `README.md` is normally here: the
+  template's README describes the template.
 - **New in the template:** add it, unless it is clearly scaffolding this project has outgrown;
   ask if unsure, and record a declined file in `not_adopted`.
 - **Not customized, and unchanged here since the last sync**
@@ -108,8 +111,12 @@ templates share workflow rules and a change made in one usually belongs in the o
 2. For each change, decide with the user whether it belongs in this template, and port it in
    this template's own words and context (the templates serve different audiences; do not copy
    blindly).
+   A change this template already has (because it was made in all the templates at once) needs
+   nothing more than marking reviewed.
 3. Set that sibling's `reviewed_commit` to the full SHA reviewed, whether or not anything was
-   ported, and commit through `/commit`, with a PR whose body links the sibling commits.
+   ported, and commit through `/commit`, with a PR whose body links the sibling commits. A commit
+   that changes only `.claude/template.json` does not make the siblings' checks fire in turn,
+   because the check ignores changes to each repository's own record and log.
 
 When you change workflow guidance in this template yourself, say in the PR body whether the
 sibling templates need the same change, and open those PRs in the same session where they do.

@@ -46,6 +46,31 @@ def tip(repo, branch):
     except Exception:
         return None
 
+# Files whose changes never need adopting: each repository's own record and AI log.
+OWN = {".claude/template.json", "ai/ai_usage_log.md"}
+
+def changed(repo, base, head):
+    """Files changed between two commits (GitHub compare API), or None if unknown."""
+    try:
+        import urllib.request
+        req = urllib.request.Request(
+            f"https://api.github.com/repos/{repo}/compare/{base}...{head}",
+            headers={"Accept": "application/vnd.github+json", "User-Agent": "template-check"})
+        data = json.load(urllib.request.urlopen(req, timeout=8))
+        return [f["filename"] for f in data.get("files", [])]
+    except Exception:
+        return None
+
+def relevant(repo, base, head, ignore):
+    """Changed files that matter here. Unknown file list: assume something does."""
+    files = changed(repo, base, head)
+    if files is None:
+        return ["(file list unavailable)"]
+    return [f for f in files if f not in ignore]
+
+def summary(files):
+    return ", ".join(files[:6]) + (f" and {len(files) - 6} more" if len(files) > 6 else "")
+
 lines = []
 role = rec.get("role", "project")
 
@@ -67,18 +92,23 @@ if role == "template":
             head = tip(repo, info.get("branch", "main"))
             seen = info.get("reviewed_commit", "")
             if head and seen and not head.startswith(seen):
-                lines.append(f"[template-check] Sibling template {repo} has moved from {seen[:7]} "
-                             f"to {head[:7]}. Run /template-sync to review its changes for ones "
-                             f"this template should adopt.")
+                files = relevant(repo, seen, head, OWN)
+                if files:
+                    lines.append(f"[template-check] Sibling template {repo} has moved from {seen[:7]} "
+                                 f"to {head[:7]}, changing {summary(files)}. Run /template-sync to "
+                                 f"review those changes for ones this template should adopt.")
 else:
     up = rec.get("upstream")
     if up:
         head = tip(up, rec.get("upstream_branch", "main"))
         seen = rec.get("synced_commit", "")
         if head and seen and not head.startswith(seen):
-            lines.append(f"[template-check] Upstream template {up} has moved from {seen[:7]} "
-                         f"(synced {rec.get('synced_on', '?')}) to {head[:7]}. Tell the user, and "
-                         f"offer to run /template-sync to review and adopt the changes.")
+            files = relevant(up, seen, head, OWN | set(rec.get("not_adopted", [])))
+            if files:
+                lines.append(f"[template-check] Upstream template {up} has moved from {seen[:7]} "
+                             f"(synced {rec.get('synced_on', '?')}) to {head[:7]}, changing "
+                             f"{summary(files)}. Tell the user, and offer to run /template-sync "
+                             f"to review and adopt the changes.")
 print("\n".join(lines))
 PY
 )" || exit 0
