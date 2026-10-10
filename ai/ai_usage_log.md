@@ -65,4 +65,4 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
 - **Sections/Files Affected**: `CLAUDE.md` (new "Rendered Output" section), `.claude/rules/latex-writing.md` (compiled PDF is not a build artifact), `.claude/rules/python-code.md`, `.claude/commands/commit.md` (step 2b), `.gitignore`.
 - **Nature of Contribution**: Edit (workflow guidance).
 - **Human Review Status**: Pending review.
-- **Git Hash**: [fill in after committing]
+- **Git Hash**: 7fbd6b1, branch `commit-rendered-output`
