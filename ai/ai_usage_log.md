@@ -93,4 +93,4 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
   instantiated, unreachable upstream) and on this template. Hook format checked against the
   Claude Code hooks documentation. Project hooks run without a trust prompt; this one only reads
   `.claude/template.json` and makes one public HTTPS request to GitHub.
-- **Git Hash**: [fill in after committing]
+- **Git Hash**: 96a854a, branch `template-sync-tooling`
