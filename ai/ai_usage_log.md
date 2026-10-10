@@ -76,3 +76,21 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
 - **Nature of Contribution**: Edit (workflow guidance).
 - **Human Review Status**: Pending review.
 - **Git Hash**: afe77db, branch `curated-documents-only`
+
+## [2026-10-10 15:01 UTC]
+- **Tool**: Claude (Anthropic), claude-opus-5-5 (1M context)
+- **Session Purpose**: Make projects check their upstream ai_project_template for workflow and
+  rule changes, at NAF's direction (2026-10-10), so repositories stop drifting from their
+  template unnoticed.
+- **Sections/Files Affected**: `.claude/template.json` (new: this template's record and the
+  sibling templates it watches); `.claude/hooks/template_check.sh` (new: session-start check,
+  read-only, once a day, silent on failure); `.claude/settings.json` (registers the hook);
+  `.claude/commands/template-sync.md` (new: applies template changes as changes, through a PR);
+  `CLAUDE.md` ("Template Updates"); `README.md` (instantiation step for the record).
+- **Nature of Contribution**: Code generation, drafting.
+- **Human Review Status**: Pending review.
+- **Notes**: The check script was tested on scratch repositories (behind, current, freshly
+  instantiated, unreachable upstream) and on this template. Hook format checked against the
+  Claude Code hooks documentation. Project hooks run without a trust prompt; this one only reads
+  `.claude/template.json` and makes one public HTTPS request to GitHub.
+- **Git Hash**: 96a854a, branch `template-sync-tooling`
