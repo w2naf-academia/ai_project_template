@@ -31,6 +31,16 @@ or click **Use this template** on the GitHub repository page.
 5. **Customize `.claude/rules/ai-governance.md`** — fill in the `{{FUNDER}}`-specific expectations section, or delete it if the project is unfunded.
 6. **Commit and push** the instantiated project to its own GitHub repo. This initial push seeds `main`; every change after it goes through a feature branch and pull request (see `CLAUDE.md` § Git Workflow).
 
+### Record which template commit you started from
+
+`.claude/template.json` arrives describing this template. Turn it into a project record: set
+`"role": "project"`, `"upstream": "w2naf-academia/ai_project_template"`, `"upstream_branch": "main"`, `"synced_commit"` to the
+template commit you instantiated from (the tip of `main` that day), and `"synced_on"`; list in
+`"customized"` the files whose placeholders you filled in, and in `"not_adopted"` any template
+files you deleted; remove `repo` and `siblings`. From then on, a session-start check reports when
+this template changes and `/template-sync` adopts the changes. If you skip this step, the first
+Claude session notices and offers to do it.
+
 ## What This Template Provides
 
 - **`CLAUDE.md`** — top-level project instructions consumed automatically by Claude Code, with placeholders for project specifics.
