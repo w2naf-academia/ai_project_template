@@ -27,10 +27,10 @@ git submodule foreach 'git diff --stat'
 
 If `git submodule foreach` produces no output, the repo has no submodules — proceed without them.
 
-### 2b. Check the human-readable record is included
-Every rendered output this session produced or changed (a memo or report PDF, final figures)
-is staged alongside its source and was rebuilt from the source being committed. A source change
-committed without its rebuilt PDF leaves the readable copy contradicting the code.
+### 2b. Check the curated record is included
+Every memo, note or report PDF this session produced or changed is staged alongside its source
+and was rebuilt from the source being committed. Bulk generated output (figure batches, plot
+sets, galleries, image compilations) is not staged; see `CLAUDE.md`.
 
 ### 3. Ask the user for session purpose
 Draft a purpose of this session for the AI log. Show it to the user, and ask them to confirm.
