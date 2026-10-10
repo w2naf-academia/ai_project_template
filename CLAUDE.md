@@ -32,6 +32,16 @@ This project starts from the `ai_project_template` scaffold. Add or remove top-l
 └── {{PROJECT-SPECIFIC FOLDERS}}  ← e.g., manuscript/, src/, posters/, proposal/
 ```
 
+## Rendered Output
+
+**Commit the human-readable record.** Rendered memos, reports, posters and final figures (PDF,
+PNG) are committed next to the source that produces them. They show what the work found without
+anyone having to rebuild it, and the commit history becomes a readable record of what was done.
+When a source changes, rebuild its output and commit both in the same commit, so they never
+disagree. What stays out of git: LaTeX intermediates (`.aux`, `.log`, `.bbl` and the like),
+caches, scratch output, and bulk or raw data that a committed script regenerates. A single file
+over 50 MB needs a decision first (GitHub warns at 50 MB and rejects files over 100 MB).
+
 ## Git Workflow
 Every change goes through a pull request, in this repo and in every submodule. Nothing is committed directly to `main`.
 1. Branch from the remote tip: `git fetch && git switch -c <topic> origin/main`

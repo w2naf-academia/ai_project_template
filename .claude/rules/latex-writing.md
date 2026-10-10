@@ -26,5 +26,7 @@ Applies to all LaTeX source files in the project (typically under a `manuscript/
 - Commit document changes in the appropriate submodule first (if applicable), then update the pointer in the main repo
 - If using Overleaf, pull before editing to avoid conflicts
 - Do not commit LaTeX build artifacts (`.aux`, `.log`, `.bbl`, `.bcf`, `.blg`, `.out`, `.toc`, `.fls`, `.fdb_latexmk`, etc.) — these are in `.gitignore`
+- **The compiled PDF is not a build artifact.** Commit it with its source, rebuilt from that source in
+  the same commit, so the repository always holds a readable copy of the current document
 - Preserve existing LaTeX formatting patterns from the template where applicable
 - Verify a clean rebuild (zero undefined references, zero overfull boxes) before committing significant prose or layout changes
