@@ -56,3 +56,13 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
 - **Nature of Contribution**: Edit
 - **Human Review Status**: Pending review
 - **Git Hash**: 9043d6e (PR w2naf-academia/ai_project_template#3)
+
+## [2026-10-10 12:08 UTC]
+- **Tool**: Claude (Anthropic), claude-opus-5-5 (1M context)
+- **Session Purpose**: Make committing rendered output standing guidance, at NAF's direction
+  (2026-10-10): memo and report PDFs and final figures capture the results of the code in
+  human-readable form and must be committed, or past work is hard to look back on.
+- **Sections/Files Affected**: `CLAUDE.md` (new "Rendered Output" section), `.claude/rules/latex-writing.md` (compiled PDF is not a build artifact), `.claude/rules/python-code.md`, `.claude/commands/commit.md` (step 2b), `.gitignore`.
+- **Nature of Contribution**: Edit (workflow guidance).
+- **Human Review Status**: Pending review.
+- **Git Hash**: 7fbd6b1, branch `commit-rendered-output`
