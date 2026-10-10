@@ -111,4 +111,4 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
 - **Human Review Status**: Pending review.
 - **Notes**: Tested on scratch repositories (behind: flagged with file list; only ignorable
   changes: silent) and on the live w2naf-academia template (flags both siblings' tooling PRs).
-- **Git Hash**: [fill in after committing]
+- **Git Hash**: 518a252, branch `template-check-filter`
