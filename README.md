@@ -24,6 +24,9 @@ or click **Use this template** on the GitHub repository page.
 2. **Prune optional rule files.** Delete the rule files that don't apply:
    - `rm .claude/rules/latex-writing.md` if no LaTeX
    - `rm .claude/rules/python-code.md` if no Python code
+   - `rm .claude/rules/grant-management.md .claude/commands/grant-setup.md` unless the repository
+     manages one sponsored award. In a grant repository, keep both and run `/grant-setup`, which
+     creates the standard layout and `grant.yaml`.
 3. **Add project-specific top-level folders** (e.g., `manuscript/`, `src/`, `posters/`, `proposal/`, `media/`).
 4. **Add submodules if needed.**
    - Overleaf manuscript: `git submodule add https://git.overleaf.com/<id> overleaf`
@@ -49,3 +52,4 @@ Claude session notices and offers to do it.
 - **`ai/ai_usage_log.md`** — append-only log of every substantive AI-assisted session.
 - **`.gitignore`** — generic LaTeX + Python build artifacts.
 - **Optional rule files** for LaTeX writing and Python code, with "delete if unused" headers.
+- **Optional grant-repository standard**: `.claude/rules/grant-management.md` (layout, `grant.yaml` schema, file naming, sensitive material) and the `/grant-setup` command that applies it. Keep both only in a repository that manages one sponsored award.

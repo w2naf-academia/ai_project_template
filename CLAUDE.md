@@ -26,7 +26,9 @@ This project starts from the `ai_project_template` scaffold. Add or remove top-l
 │   └── rules/
 │       ├── ai-governance.md
 │       ├── latex-writing.md      ← delete if no LaTeX
-│       └── python-code.md        ← delete if no Python
+│       ├── python-code.md        ← delete if no Python
+│       └── grant-management.md   ← delete unless this repo manages one award
+│                                    (with commands/grant-setup.md)
 ├── ai/
 │   └── ai_usage_log.md           ← mandatory AI session log
 └── {{PROJECT-SPECIFIC FOLDERS}}  ← e.g., manuscript/, src/, posters/, proposal/
