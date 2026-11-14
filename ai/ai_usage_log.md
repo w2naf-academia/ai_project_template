@@ -112,3 +112,17 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
 - **Notes**: Tested on scratch repositories (behind: flagged with file list; only ignorable
   changes: silent) and on the live w2naf-academia template (flags both siblings' tooling PRs).
 - **Git Hash**: 518a252, branch `template-check-filter`
+
+## [2026-11-14 01:12 UTC]
+- **Tool**: Claude (Anthropic), claude-opus-5-5
+- **Session Purpose**: Add an optional standard for repositories that manage one sponsored
+  award, at N. A. Frissell's direction (2026-11-14), so every grant repository shares one
+  layout, one machine-readable fact file and one set of sensitive-material rules.
+- **Sections/Files Affected**: `.claude/rules/grant-management.md` (new: naming, layout,
+  file naming, `grant.yaml` schema, sensitive material); `.claude/commands/grant-setup.md`
+  (new: applies the standard to a new or existing repository); `CLAUDE.md` (structure
+  tree); `README.md` (instantiation step, contents list).
+- **Nature of Contribution**: Drafting (rules and command), edit.
+- **Human Review Status**: Pending review. Layout modeled on the PI's existing grant
+  repositories; the schema draws on the archived grant-management dashboard's data model.
+- **Git Hash**: [fill in after committing]
