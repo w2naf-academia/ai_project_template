@@ -125,4 +125,4 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
 - **Nature of Contribution**: Drafting (rules and command), edit.
 - **Human Review Status**: Pending review. Layout modeled on the PI's existing grant
   repositories; the schema draws on the archived grant-management dashboard's data model.
-- **Git Hash**: [fill in after committing]
+- **Git Hash**: 6dcaa63, branch `grant-management-standard`
