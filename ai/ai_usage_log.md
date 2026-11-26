@@ -133,4 +133,4 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
 - **Sections/Files Affected**: `.claude/commands/commit.md`, `.claude/commands/template-sync.md`, `CLAUDE.md`.
 - **Nature of Contribution**: Edit of workflow instructions from NAF's verbatim instruction and his acceptance of four proposed refinements.
 - **Human Review Status**: Pending review via PR.
-- **Git Hash**: [fill in after committing]
+- **Git Hash**: `3ecbb1b`, branch `pr-draft-workflow`, PR w2naf-academia/ai_project_template#9.
