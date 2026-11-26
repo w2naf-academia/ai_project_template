@@ -62,7 +62,7 @@ git -C <repo> switch -c <topic> origin/main     # uncommitted changes carry over
 git -C <repo> add <files>
 git -C <repo> commit -m "[AI-assisted] <description>"
 git -C <repo> push -u origin <topic>
-gh pr create --repo <owner>/<repo> --base main --head <topic> --title "..." --body-file <file>
+gh pr create --draft --repo <owner>/<repo> --base main --head <topic> --title "..." --body-file <file>
 ```
 If the repo is already on a feature branch whose PR is still open **for this same change**, add
 the commit there and push it; do not open a second PR. If it is on some other branch, say so and
@@ -73,6 +73,14 @@ in the other repos of the same change, and ends with an AI attribution line. Pus
 branch, opening the PR and pushing further commits to it are standing permission once the user
 has approved the commit. **Never push `main`. Never merge**: a human reviewer reviews and merges. A repo
 whose remote cannot host a PR (an Overleaf project, say) is outside this step; ask.
+
+**Open every PR as a draft; only a human marks it ready.** Never run `gh pr ready` unless the
+user asks for that PR. Leave the word "draft" out of PR titles, bodies, commit messages and what
+you tell the user: GitHub shows the status. **Every time you create a PR or push to one, give
+the user its URL** with one line: "After you review, click **Ready for review** at the bottom of
+the PR, then merge." If a PR has already been marked ready and you push a substantive new commit,
+return it to draft with `gh pr ready --undo`; the log hash update and a merge of `main` made only
+to resolve a conflict are exempt.
 
 In the main repo, stage `ai/ai_usage_log.md` with the other changed files. **Do not stage a
 submodule pointer that names an unmerged branch commit.**
@@ -87,7 +95,7 @@ git log --oneline -1
 Update the entry's **Git Hash** field with the branch commit and PR for each repo (e.g.
 `main-repo=abc1234 (PR owner/repo#5), sub=def5678 (PR owner/sub#3)`). Commit that on the same
 branch with a plain message without the `[AI-assisted]` prefix, such as
-`Update AI usage log with git hashes`, and push it.
+`Update AI usage log with git hashes`, and push it. Give the user the PR URL again (step 6).
 
 That is the last log update for this change, and it never needs a PR of its own. A merge commit
 keeps every branch SHA, so the recorded hash stays valid after the merge. If a PR is squash- or

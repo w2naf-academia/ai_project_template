@@ -49,8 +49,9 @@ like), caches, scratch output, and raw data. A curated PDF over 50 MB needs a de
 Every change goes through a pull request, in this repo and in every submodule. Nothing is committed directly to `main`.
 1. Branch from the remote tip: `git fetch && git switch -c <topic> origin/main`
 2. Commit on the branch, with the `[AI-assisted]` prefix where applicable
-3. Push the branch and open a PR: `git push -u origin <topic>`, then `gh pr create`
-4. A human reviews and merges. Claude never pushes `main` and never merges.
+3. Push the branch and open a PR: `git push -u origin <topic>`, then `gh pr create --draft`
+4. Give the user the PR URL, with: "After you review, click **Ready for review** at the bottom of the PR, then merge." Do this every time a PR is created or pushed to.
+5. A human marks the PR ready and merges. Claude never runs `gh pr ready` unless asked for that PR, never pushes `main`, and never merges. Leave the word "draft" out of PR text and conversation; GitHub shows the status. If a PR already marked ready gets a substantive new commit, return it with `gh pr ready --undo` (the log hash update and a conflict-only merge of `main` are exempt).
 
 Once the user has approved a commit, pushing its feature branch and opening or updating its PR is standing permission. Any other push needs explicit instruction. Never force-push or hard-reset.
 

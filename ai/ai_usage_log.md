@@ -126,3 +126,11 @@ Required per University of Scranton AI Policy, HamSCI Generative AI Use Agreemen
 - **Human Review Status**: Pending review. Layout modeled on the PI's existing grant
   repositories; the schema draws on the archived grant-management dashboard's data model.
 - **Git Hash**: 6dcaa63, branch `grant-management-standard`
+
+## [2026-11-26 13:55 UTC]
+- **Tool**: Claude (Anthropic), claude-opus-5-5
+- **Session Purpose**: NAF: "All AI-opened PRs should be opened in Draft mode. A human will click to convert from draft mode to ready to merge." and "Give the user brief instructions to change the PR from draft to ready after they review. Also, be sure to give the URL to the user every time you create or modify a PR." Apply the rule to research-conventions, the MSTID project and the three AI project templates.
+- **Sections/Files Affected**: `.claude/commands/commit.md`, `.claude/commands/template-sync.md`, `CLAUDE.md`.
+- **Nature of Contribution**: Edit of workflow instructions from NAF's verbatim instruction and his acceptance of four proposed refinements.
+- **Human Review Status**: Pending review via PR.
+- **Git Hash**: `3ecbb1b`, branch `pr-draft-workflow`, PR w2naf-academia/ai_project_template#9.
