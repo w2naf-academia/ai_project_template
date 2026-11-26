@@ -85,7 +85,8 @@ check so the next session re-checks: `rm -f "$(git rev-parse --absolute-git-dir)
 ### 5. Commit through `/commit`
 Log the session (purpose: adopting template changes `<old>..<new>`), commit with the
 `[AI-assisted]` prefix, push the branch, and open a PR that lists each upstream change and how
-it was applied. In a repository with submodules, each submodule that follows a template is synced
+it was applied. Open it with `gh pr create --draft` and give the user its URL, as in `/commit`
+step 6. In a repository with submodules, each submodule that follows a template is synced
 on its own, in its own PR.
 
 ## In a new project still carrying the template's record
